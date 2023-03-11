@@ -53,65 +53,64 @@ export const TIMETABLE_GRAPHQL_QUERY = `query timetable($uid: String!, $from: Fl
   }
 `
 
+export interface Course {
+  id: string
+  label: string
+  color: string
+  url?: string
+  type: string
+  __typename: string
+}
+
+export interface Teacher {
+  name: string
+  email: string
+  __typename: string
+}
+
+export interface Room {
+  label: string
+  __typename: string
+}
+
+export interface Group {
+  label: string
+  __typename: string
+}
+
+export interface Event {
+  id: string
+  startDateTime: string
+  endDateTime: string
+  day: number
+  duration: number
+  urls: string[]
+  course: Course
+  teachers: Teacher[]
+  rooms: Room[]
+  groups: Group[]
+  __typename: string
+}
+
+export interface Message {
+  text: string
+  level: string
+  __typename: string
+}
+
+export interface Planning {
+  id: string
+  type: string
+  label: string
+  default: boolean
+  messages: Message[]
+  events: Event[]
+  __typename: string
+  }
 
 export interface Timetable {
 id: string
 messages: any[]
 plannings: Planning[]
-__typename: string
-}
-
-export interface Planning {
-id: string
-type: string
-label: string
-default: boolean
-messages: Message[]
-events: Event[]
-__typename: string
-}
-
-export interface Message {
-text: string
-level: string
-__typename: string
-}
-
-export interface Event {
-id: string
-startDateTime: string
-endDateTime: string
-day: number
-duration: number
-urls: string[]
-course: Course
-teachers: Teacher[]
-rooms: Room[]
-groups: Group[]
-__typename: string
-}
-
-export interface Course {
-id: string
-label: string
-color: string
-url?: string
-type: string
-__typename: string
-}
-
-export interface Teacher {
-name: string
-email: string
-__typename: string
-}
-
-export interface Room {
-label: string
-__typename: string
-}
-
-export interface Group {
-label: string
 __typename: string
 }
