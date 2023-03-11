@@ -2,7 +2,7 @@ import axios from 'axios'
 import { XMLParser } from 'fast-xml-parser'
 import { AuthenticationSuccess } from './Auth/AuthenticationSuccess'
 import { Service } from './Auth/Service'
-import { Multi } from './Services/Multi'
+export { Multi } from './Services/Multi'
 
 const CAS_LOGIN_URL = 'https://auth.univ-lorraine.fr/login'
 const CAS_SERVICE_VALIDATE_URL = 'https://auth.univ-lorraine.fr/serviceValidate'

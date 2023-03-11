@@ -23,6 +23,7 @@ export class Multi {
      */
     public async getTimetable(uid: string, from: Date, to: Date): Promise<Timetable> {
         const response = await this.queryGraphQL('timetable', TIMETABLE_GRAPHQL_QUERY, {uid, from: from.getTime(), to: to.getTime()})
+        console.log(response.data)
         return response.data.data.timetable
     }
 
@@ -55,7 +56,8 @@ export class Multi {
                 'Content-Type': 'application/json',
                 'x-refresh-token': this.refreshToken,
                 'x-token': this.token
-            }
+            },
+            responseType: 'json',
         })
         if(response.headers['x-token-status'] != '200') {
             if(!response.headers['x-token'] && !response.headers['x-token']) throw new Error("Impossible d'obtenir un nouveau jeton valide, veuilez demander un nouveau ticket auprès du CAS...")
