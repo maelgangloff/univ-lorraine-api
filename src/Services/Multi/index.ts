@@ -8,6 +8,13 @@ import { FACTUEL_GRAPHQL_QUERY, News } from './Factuel'
 
 const MULTI_GRAPHQL_URL = 'https://multi.univ-lorraine.fr/graphql'
 
+/**
+ * Le mULti centralise plusieurs ressouces:
+ *  - Emploi du temps
+ *  - Taux d'occupation des BU
+ *  - Menu des Restos U'
+ *  - FactUeL
+ */
 export class Multi {
   private token: string
   private refreshToken: string
@@ -73,7 +80,7 @@ export class Multi {
      * Récupérer deux jetons JWT permettant de s'authentifier auprès de l'API du Multi
      * Le premier JWT est le jeton d'authentification. Le deuxième est un refresh token permettant de générer un nouveau token d'authentification.
      * @param utilisateur Un utilisateur de l'UL
-     * @returns {[string, string]} Les deux jetons JWT
+     * @returns {string[]} Les deux jetons JWT
      */
   public static async login (utilisateur: Utilisateur): Promise<[string, string]> {
     const response = await axios.post(MULTI_GRAPHQL_URL, {

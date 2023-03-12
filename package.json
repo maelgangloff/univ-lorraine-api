@@ -1,6 +1,6 @@
 {
   "name": "univ-lorraine-api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
   "repository": "https://github.com/maelgangloff/univ-lorraine-api",
@@ -10,7 +10,8 @@
     "email": "contact@maelgangloff.fr"
   },
   "scripts": {
-    "lint": "eslint src --ext .ts"
+    "lint": "eslint src --ext .ts",
+    "doc": "jsdoc2md -f dist/**/*.js > README.md"
   },
   "license": "ISC",
   "devDependencies": {
