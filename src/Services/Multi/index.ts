@@ -4,6 +4,7 @@ import { Service } from '../../Auth/Service'
 import { Timetable, TIMETABLE_GRAPHQL_QUERY } from './Timetable'
 import { AffluenceBU, BU } from './AffluencesBU'
 import { CROUS_MENU_GRAPHQL_QUERY, Resto } from './MenuCROUS'
+import { FACTUEL_GRAPHQL_QUERY, News } from './Factuel'
 
 const MULTI_GRAPHQL_URL = 'https://multi.univ-lorraine.fr/graphql'
 
@@ -54,6 +55,18 @@ export class Multi {
       responseType: 'json'
     })
     return response.data.data.restos
+  }
+
+  public static async getFactuel (): Promise<News[]> {
+    const response = await axios.post<{data: {news: News[]}}>(MULTI_GRAPHQL_URL, {
+      operationName: 'factuel', query: FACTUEL_GRAPHQL_QUERY, variables: {}
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      responseType: 'json'
+    })
+    return response.data.data.news
   }
 
   /**
