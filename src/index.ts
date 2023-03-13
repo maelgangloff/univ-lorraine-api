@@ -4,9 +4,11 @@ import { AuthenticationSuccess } from './Auth/AuthenticationSuccess'
 import { Service } from './Auth/Service'
 
 export { Multi } from './Services/Multi'
+export { Annuaire, decryptData } from './Services/Annuaire'
 export { Service } from './Auth/Service'
-export { Timetable } from './Services/Multi/Timetable'
-export { BU, AffluenceBU } from './Services/Multi/AffluencesBU'
+export * from './Services/Multi/Timetable'
+export * from './Services/Annuaire/AnnuaireResponse'
+export * from './Services/Multi/AffluencesBU'
 export { Menu, Resto } from './Services/Multi/MenuCROUS'
 export { News } from './Services/Multi/Factuel'
 

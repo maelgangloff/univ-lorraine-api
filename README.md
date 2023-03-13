@@ -4,6 +4,9 @@
 <dt><a href="#Utilisateur">Utilisateur</a></dt>
 <dd><p>Support non officiel des API de l&#39;Université de Lorraine</p>
 </dd>
+<dt><a href="#Annuaire">Annuaire</a></dt>
+<dd><p>L&#39;annuaire web de l&#39;Université de Lorraine permet de se renseigner sur un personnel (adresse mail, affectation, ...)</p>
+</dd>
 <dt><a href="#Multi">Multi</a></dt>
 <dd><p>Le mULti centralise plusieurs ressouces:</p>
 <ul>
@@ -12,6 +15,14 @@
 <li>Menu des Restos U&#39;</li>
 <li>FactUeL</li>
 </ul>
+</dd>
+</dl>
+
+## Functions
+
+<dl>
+<dt><a href="#decryptData">decryptData(s)</a> ⇒ <code>string</code> | <code>null</code></dt>
+<dd><p>Fonction permettant de &quot;décoder&quot; certaines données de l&#39;annuaire: adresse mail et numéro de téléphone</p>
 </dd>
 </dl>
 
@@ -52,6 +63,112 @@ Récupérer les informations de l'utilisateur du CAS. L'opération nécessite un
 | --- | --- | --- |
 | service | <code>Service</code> \| <code>string</code> | L'URL de connexion du service (utilisé comme un identifiant) |
 | ticket | <code>string</code> | Le ticket adressé au service |
+
+<a name="Annuaire"></a>
+
+## Annuaire
+L'annuaire web de l'Université de Lorraine permet de se renseigner sur un personnel (adresse mail, affectation, ...)
+
+**Kind**: global class  
+
+* [Annuaire](#Annuaire)
+    * [.getLdapSearch(valeur, filtervalue, withvac)](#Annuaire.getLdapSearch) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getPhoto(valeur)](#Annuaire.getPhoto) ⇒ <code>Promise.&lt;PhotoResponse&gt;</code>
+    * [.getAffectations(valeur, principale)](#Annuaire.getAffectations) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getActivite(valeur)](#Annuaire.getActivite) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getFonctions(valeur)](#Annuaire.getFonctions) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getStructuresRacine()](#Annuaire.getStructuresRacine)
+    * [.getDomainesFonction()](#Annuaire.getDomainesFonction) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getPersonnelsFonction(valeur)](#Annuaire.getPersonnelsFonction) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+
+<a name="Annuaire.getLdapSearch"></a>
+
+### Annuaire.getLdapSearch(valeur, filtervalue, withvac) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Rechercher une personne travaillant pour l'UL
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Le résultat de la recherche  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| valeur | <code>string</code> |  | Nom/Prénom/Téléphone |
+| filtervalue | <code>string</code> | <code>null</code> | Filtrer par identifiant d'un service ou d'une composante |
+| withvac | <code>boolean</code> |  | Inclure ou non les vacataires dans la recherche |
+
+<a name="Annuaire.getPhoto"></a>
+
+### Annuaire.getPhoto(valeur) ⇒ <code>Promise.&lt;PhotoResponse&gt;</code>
+Il est possible d'accéder à la photo des personnels ayant donné leur accord pour qu'elle soit publique.
+La photo est encodée en base64.
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;PhotoResponse&gt;</code> - La réponse contenant la photo en base64  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant d'un personnel |
+
+<a name="Annuaire.getAffectations"></a>
+
+### Annuaire.getAffectations(valeur, principale) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Obtenir les détails des affectations d'un personnel
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Les affectations du personnel  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Les identifiants des secteurs d'affectation |
+| principale | <code>string</code> | L'affectation principale du personnel |
+
+<a name="Annuaire.getActivite"></a>
+
+### Annuaire.getActivite(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Activité principale du personnel
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - L'activité principale du personnel  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant d'un personnel |
+
+<a name="Annuaire.getFonctions"></a>
+
+### Annuaire.getFonctions(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Les fonctions du personnel au sein de l'Université (Directeur de la composante, ...)
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Les fonctions du personnel au sein de l'UL  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant d'un personnel |
+
+<a name="Annuaire.getStructuresRacine"></a>
+
+### Annuaire.getStructuresRacine()
+Liste les Services & Composantes de l'Université de Lorraine (Présidence, Formation, Recherche et Ecoles doctorales)
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+<a name="Annuaire.getDomainesFonction"></a>
+
+### Annuaire.getDomainesFonction() ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Liste les fonctions au sein de l'UL
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Les fonctions  
+<a name="Annuaire.getPersonnelsFonction"></a>
+
+### Annuaire.getPersonnelsFonction(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Obtenir les personnels liés à une fonction particulière
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Les personnels attachés à cette fonction  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant de la fonction |
 
 <a name="Multi"></a>
 
@@ -117,4 +234,16 @@ Le premier JWT est le jeton d'authentification. Le deuxième est un refresh toke
 | Param | Description |
 | --- | --- |
 | utilisateur | Un utilisateur de l'UL |
+
+<a name="decryptData"></a>
+
+## decryptData(s) ⇒ <code>string</code> \| <code>null</code>
+Fonction permettant de "décoder" certaines données de l'annuaire: adresse mail et numéro de téléphone
+
+**Kind**: global function  
+**Returns**: <code>string</code> \| <code>null</code> - Les données "décodées"  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| s | <code>string</code> | Les données à "décoder" |
 
