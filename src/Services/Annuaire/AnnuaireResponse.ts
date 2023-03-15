@@ -24,28 +24,6 @@ export interface Item {
     urlLink: string;
 }
 
-export interface Items2 {
-    id: any;
-    simpleId: any;
-    supannCodeEntite: string;
-    supannTypeEntite: any;
-    udlLibelleAffichage: string;
-    displayName: any;
-    fonctionnaire: any;
-    nbpersonnels: number;
-    nbpersprive: number;
-    nbperspublic: number;
-    nbetu: number;
-    udlStructureAffichage: number;
-    udlNiveauStructure: number;
-    leaf: number;
-    udlCodeFonctionnelStructure: any;
-    listPersonne: any;
-    acronyme: any;
-    urlImageWeb: any;
-    urlWebSite: any;
-}
-
 export interface ItemAffectation {
     supannCodeEntite: string;
     description: string;
@@ -54,6 +32,33 @@ export interface ItemAffectation {
     ord: number;
     idlb: number;
     type: string;
+}
+
+export interface Items2 {
+    id: string|null;
+    simpleId: string|null;
+    supannCodeEntite: string|null;
+    supannTypeEntite: string|null;
+    udlLibelleAffichage: string;
+    displayName: any;
+    fonctionnaire: {
+        displayName: string
+        fonction: string
+        id: string
+        type: string
+    }[];
+    nbpersonnels: number;
+    nbpersprive: number;
+    nbperspublic: number;
+    nbetu: number;
+    udlStructureAffichage: number;
+    udlNiveauStructure: number;
+    leaf: number;
+    udlCodeFonctionnelStructure: any;
+    listPersonne: Item[] | ItemAffectation[] | Items2[] | null;
+    acronyme: string|null;
+    urlImageWeb: string|null;
+    urlWebSite: string|null;
 }
 
 export interface Fonction {

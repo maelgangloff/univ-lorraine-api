@@ -25,7 +25,7 @@ export function decryptData (s: string): string|null {
  */
 export class Annuaire {
   /**
-     * Rechercher une personne travaillant pour l'UL
+     * Rechercher une personne travaillant dans l'Annuaire
      * @param {string} valeur Nom/Prénom/Téléphone
      * @param {string} filtervalue Filtrer par identifiant d'un service ou d'une composante
      * @param {boolean} withvac Inclure ou non les vacataires dans la recherche
@@ -67,7 +67,7 @@ export class Annuaire {
   }
 
   /**
-     * Activité principale du personnel
+     * Activité principale de la personne
      * @param {string} valeur Identifiant d'un personnel
      * @returns {Promise<AnnuaireResponse>} L'activité principale du personnel
      */
@@ -114,6 +114,66 @@ export class Annuaire {
      */
   public static async getPersonnelsFonction (valeur: string): Promise<AnnuaireResponse> {
     const response = await axios.get<AnnuaireResponse>(BASE_URL + 'getpersonnelsfonction', {
+      params: { valeur }
+    })
+    return response.data
+  }
+
+  /**
+   * Rechercher une personne à partir de son identifiant
+   * @param {string} valeur Identifiant d'un personnel
+   * @returns {Promise<AnnuaireResponse>} Un personnel (vacataire)
+   */
+  public static async getPersonne (valeur: string): Promise<AnnuaireResponse> {
+    const response = await axios.get<AnnuaireResponse>(BASE_URL + 'getpersonne', {
+      params: { valeur }
+    })
+    return response.data
+  }
+
+  /**
+   * Lister tous les vacataires d'une structure
+   * @param {string} valeur Identifiant de la structure (supannCodeEntite)
+   * @returns {Promise<AnnuaireResponse>} Les vacataires attachés à la structure
+   */
+  public static async getVacataires (valeur: string): Promise<AnnuaireResponse> {
+    const response = await axios.get<AnnuaireResponse>(BASE_URL + 'getvacatairesstructure', {
+      params: { valeur }
+    })
+    return response.data
+  }
+
+  /**
+   * Lister tous les personnels non vacataires d'une structure
+   * @param {string} valeur Identifiant de la structure (supannCodeEntite)
+   * @returns {Promise<AnnuaireResponse>} Les personnels attachés à la structure
+   */
+  public static async getPersonnelsStructure (valeur: string): Promise<AnnuaireResponse> {
+    const response = await axios.get<AnnuaireResponse>(BASE_URL + 'getpersonnelsstructure', {
+      params: { valeur }
+    })
+    return response.data
+  }
+
+  /**
+   * Lister tous les personnels non vacataires des structures filles d'une entité
+   * @param {string} valeur Identifiant de la structure (supannCodeEntite)
+   * @returns {Promise<AnnuaireResponse>} Les personnels attachés aux structures filles d'une entité
+   */
+  public static async getPersonnelsStructuresFilles (valeur: string): Promise<AnnuaireResponse> {
+    const response = await axios.get<AnnuaireResponse>(BASE_URL + 'getpersstructuresfilles', {
+      params: { valeur }
+    })
+    return response.data
+  }
+
+  /**
+   * Lister tous les vacataires des structures filles d'une entité
+   * @param {string} valeur Identifiant de la structure (supannCodeEntite)
+   * @returns {Promise<AnnuaireResponse>} Les vacataires attachés aux structures filles d'une entité
+   */
+  public static async getVacatairesStructuresFilles (valeur: string): Promise<AnnuaireResponse> {
+    const response = await axios.get<AnnuaireResponse>(BASE_URL + 'getvacstructuresfilles', {
       params: { valeur }
     })
     return response.data

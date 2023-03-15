@@ -80,11 +80,16 @@ L'annuaire web de l'Université de Lorraine permet de se renseigner sur un perso
     * [.getStructuresRacine()](#Annuaire.getStructuresRacine)
     * [.getDomainesFonction()](#Annuaire.getDomainesFonction) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
     * [.getPersonnelsFonction(valeur)](#Annuaire.getPersonnelsFonction) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getPersonne(valeur)](#Annuaire.getPersonne) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getVacataires(valeur)](#Annuaire.getVacataires) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getPersonnelsStructure(valeur)](#Annuaire.getPersonnelsStructure) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getPersonnelsStructuresFilles(valeur)](#Annuaire.getPersonnelsStructuresFilles) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+    * [.getVacatairesStructuresFilles(valeur)](#Annuaire.getVacatairesStructuresFilles) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
 
 <a name="Annuaire.getLdapSearch"></a>
 
 ### Annuaire.getLdapSearch(valeur, filtervalue, withvac) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
-Rechercher une personne travaillant pour l'UL
+Rechercher une personne travaillant dans l'Annuaire
 
 **Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
 **Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Le résultat de la recherche  
@@ -124,7 +129,7 @@ Obtenir les détails des affectations d'un personnel
 <a name="Annuaire.getActivite"></a>
 
 ### Annuaire.getActivite(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
-Activité principale du personnel
+Activité principale de la personne
 
 **Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
 **Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - L'activité principale du personnel  
@@ -169,6 +174,66 @@ Obtenir les personnels liés à une fonction particulière
 | Param | Type | Description |
 | --- | --- | --- |
 | valeur | <code>string</code> | Identifiant de la fonction |
+
+<a name="Annuaire.getPersonne"></a>
+
+### Annuaire.getPersonne(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Rechercher une personne à partir de son identifiant
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Un personnel (vacataire)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant d'un personnel |
+
+<a name="Annuaire.getVacataires"></a>
+
+### Annuaire.getVacataires(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Lister tous les vacataires d'une structure
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Les vacataires attachés à la structure  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant de la structure (supannCodeEntite) |
+
+<a name="Annuaire.getPersonnelsStructure"></a>
+
+### Annuaire.getPersonnelsStructure(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Lister tous les personnels non vacataires d'une structure
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Les personnels attachés à la structure  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant de la structure (supannCodeEntite) |
+
+<a name="Annuaire.getPersonnelsStructuresFilles"></a>
+
+### Annuaire.getPersonnelsStructuresFilles(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Lister tous les personnels non vacataires des structures filles d'une entité
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Les personnels attachés aux structures filles d'une entité  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant de la structure (supannCodeEntite) |
+
+<a name="Annuaire.getVacatairesStructuresFilles"></a>
+
+### Annuaire.getVacatairesStructuresFilles(valeur) ⇒ <code>Promise.&lt;AnnuaireResponse&gt;</code>
+Lister tous les vacataires des structures filles d'une entité
+
+**Kind**: static method of [<code>Annuaire</code>](#Annuaire)  
+**Returns**: <code>Promise.&lt;AnnuaireResponse&gt;</code> - Les vacataires attachés aux structures filles d'une entité  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| valeur | <code>string</code> | Identifiant de la structure (supannCodeEntite) |
 
 <a name="Multi"></a>
 
