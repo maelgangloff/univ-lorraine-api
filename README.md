@@ -2,7 +2,9 @@
 
 <dl>
 <dt><a href="#Utilisateur">Utilisateur</a></dt>
-<dd><p>Support non officiel des API de l&#39;Université de Lorraine</p>
+<dd><p>Support non officiel des API de l&#39;Université de Lorraine
+Un exemple d&#39;implémentation est disponible sur <a href="https://github.com/maelgangloff/u2l-bot">maelgangloff/bot-u2l</a></p>
+<p>La classe Utilisateur contient les informations d&#39;authentification d&#39;un étudiant ou d&#39;un personnel de l&#39;Université de Lorraine. Elle permet de récupérer un ticket auprès du serveur d&#39;authentification CAS pour s&#39;authentifier auprès de serveurs tiers (mULti, Annuaire, ...).</p>
 </dd>
 <dt><a href="#Annuaire">Annuaire</a></dt>
 <dd><p>L&#39;annuaire web de l&#39;Université de Lorraine permet de se renseigner sur un personnel (adresse mail, affectation, ...)</p>
@@ -30,6 +32,9 @@
 
 ## Utilisateur
 Support non officiel des API de l'Université de Lorraine
+Un exemple d'implémentation est disponible sur [maelgangloff/bot-u2l](https://github.com/maelgangloff/u2l-bot)
+
+La classe Utilisateur contient les informations d'authentification d'un étudiant ou d'un personnel de l'Université de Lorraine. Elle permet de récupérer un ticket auprès du serveur d'authentification CAS pour s'authentifier auprès de serveurs tiers (mULti, Annuaire, ...).
 
 **Kind**: global class  
 
@@ -51,6 +56,15 @@ Générer un ticket d'authentification à faire utiliser par un service
 | --- | --- | --- |
 | service | <code>Service</code> \| <code>string</code> | L'URL de redirection à utiliser pour transmettre le ticket au service |
 
+**Example**  
+```js
+const { Utilisateur, Service } = require('univ-lorraine-api')
+
+const user = new Utilisateur('identifiantUL', 'motdepasseUL')
+user.getTicket(Service.MULTI).then(ticket => {
+ console.log('Ticket à faire consommer par le service MULTI: ' + ticket)
+})
+```
 <a name="Utilisateur.serviceValidate"></a>
 
 ### Utilisateur.serviceValidate(service, ticket) ⇒ <code>Promise.&lt;AuthenticationSuccess&gt;</code>
@@ -64,6 +78,16 @@ Récupérer les informations de l'utilisateur du CAS. L'opération nécessite un
 | service | <code>Service</code> \| <code>string</code> | L'URL de connexion du service (utilisé comme un identifiant) |
 | ticket | <code>string</code> | Le ticket adressé au service |
 
+**Example**  
+```js
+const { Utilisateur, Service } = require('univ-lorraine-api')
+
+const user = new Utilisateur('identifiantUL', 'motdepasseUL')
+user.getTicket(Service.MULTI).then(async ticket => {
+ const infos = await Utilisateur.serviceValidate(Service.MULTI, ticket)
+ console.log(`Vous êtes bien authentifié en tant que ${infos['cas:attributes']['cas:displayname']} <${infos['cas:attributes']['cas:mail']}>.`)
+})
+```
 <a name="Annuaire"></a>
 
 ## Annuaire
@@ -98,8 +122,18 @@ Rechercher une personne travaillant dans l'Annuaire
 | --- | --- | --- | --- |
 | valeur | <code>string</code> |  | Nom/Prénom/Téléphone |
 | filtervalue | <code>string</code> | <code>null</code> | Filtrer par identifiant d'un service ou d'une composante |
-| withvac | <code>boolean</code> |  | Inclure ou non les vacataires dans la recherche |
+| withvac | <code>boolean</code> |  | Rechercher dans les vacataires ou non |
 
+**Example**  
+```js
+const { Annuaire, decryptData } = require('univ-lorraine-api')
+
+Annuaire.getLdapSearch('Durand', null, false).then(reponse => {
+ for(const personne of reponse.items) {
+   console.log(`${personne.displayName}<${decryptData(personne.mail)}>`)
+ }
+})
+```
 <a name="Annuaire.getPhoto"></a>
 
 ### Annuaire.getPhoto(valeur) ⇒ <code>Promise.&lt;PhotoResponse&gt;</code>
@@ -268,6 +302,19 @@ Emploi du temps d'une personne de l'Université de Lorraine
 | from | <code>Date</code> | Date de début |
 | to | <code>Date</code> | Date de fin |
 
+**Example**  
+```js
+const { Utilisateur, Multi } = require('univ-lorraine-api')
+
+MMulti.login(new Utilisateur('identifiantUL', 'motdepasseUL')).then(async auth => {
+ const user = new Multi(auth)
+
+ const timetable = await user.getTimetable('identifiantUL', new Date('2023-03-01'), new Date('2023-03-31'))
+ for(const planning of timetable.plannings) {
+   console.log('Planning : ' + planning.label)
+ }
+})
+```
 <a name="Multi.getAffluenceBU"></a>
 
 ### Multi.getAffluenceBU(buToken) ⇒ <code>Promise.&lt;AffluenceBU&gt;</code>

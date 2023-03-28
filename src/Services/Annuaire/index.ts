@@ -28,7 +28,16 @@ export class Annuaire {
      * Rechercher une personne travaillant dans l'Annuaire
      * @param {string} valeur Nom/Prénom/Téléphone
      * @param {string} filtervalue Filtrer par identifiant d'un service ou d'une composante
-     * @param {boolean} withvac Inclure ou non les vacataires dans la recherche
+     * @param {boolean} withvac Rechercher dans les vacataires ou non
+     * @example ```js
+     * const { Annuaire, decryptData } = require('univ-lorraine-api')
+     * 
+     * Annuaire.getLdapSearch('Durand', null, false).then(reponse => {
+     *  for(const personne of reponse.items) {
+     *    console.log(`${personne.displayName}<${decryptData(personne.mail)}>`)
+     *  }
+     * })
+     * ```
      * @returns {Promise<AnnuaireResponse>} Le résultat de la recherche
      */
   public static async getLdapSearch (valeur: string, filtervalue: string|null = null, withvac?: boolean): Promise<AnnuaireResponse> {
