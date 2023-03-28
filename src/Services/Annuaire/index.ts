@@ -34,7 +34,7 @@ export class Annuaire {
      * 
      * Annuaire.getLdapSearch('Durand', null, false).then(reponse => {
      *  for(const personne of reponse.items) {
-     *    console.log(`${personne.displayName}<${decryptData(personne.mail)}>`)
+     *    console.log(`${personne.displayName} <${decryptData(personne.mail)}>`)
      *  }
      * })
      * ```

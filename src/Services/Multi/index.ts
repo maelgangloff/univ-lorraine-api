@@ -41,7 +41,7 @@ export class Multi {
      * @example ```js
      * const { Utilisateur, Multi } = require('univ-lorraine-api')
      * 
-     * MMulti.login(new Utilisateur('identifiantUL', 'motdepasseUL')).then(async auth => {
+     * Multi.login(new Utilisateur('identifiantUL', 'motdepasseUL')).then(async auth => {
      *  const user = new Multi(auth)
      *  
      *  const timetable = await user.getTimetable('identifiantUL', new Date('2023-03-01'), new Date('2023-03-31'))

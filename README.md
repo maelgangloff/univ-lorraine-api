@@ -130,7 +130,7 @@ const { Annuaire, decryptData } = require('univ-lorraine-api')
 
 Annuaire.getLdapSearch('Durand', null, false).then(reponse => {
  for(const personne of reponse.items) {
-   console.log(`${personne.displayName}<${decryptData(personne.mail)}>`)
+   console.log(`${personne.displayName} <${decryptData(personne.mail)}>`)
  }
 })
 ```
@@ -306,7 +306,7 @@ Emploi du temps d'une personne de l'Université de Lorraine
 ```js
 const { Utilisateur, Multi } = require('univ-lorraine-api')
 
-MMulti.login(new Utilisateur('identifiantUL', 'motdepasseUL')).then(async auth => {
+Multi.login(new Utilisateur('identifiantUL', 'motdepasseUL')).then(async auth => {
  const user = new Multi(auth)
 
  const timetable = await user.getTimetable('identifiantUL', new Date('2023-03-01'), new Date('2023-03-31'))
