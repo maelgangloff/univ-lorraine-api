@@ -16,7 +16,8 @@ const CAS_LOGIN_URL = 'https://auth.univ-lorraine.fr/login'
 const CAS_SERVICE_VALIDATE_URL = 'https://auth.univ-lorraine.fr/serviceValidate'
 
 /**
- * Support non officiel des API de l'Université de Lorraine  
+ * Support non officiel des API de l'Université de Lorraine
+ * 
  * Un exemple d'implémentation est disponible sur [maelgangloff/bot-u2l](https://github.com/maelgangloff/u2l-bot)
  * 
  * La classe Utilisateur contient les informations d'authentification d'un étudiant ou d'un personnel de l'Université de Lorraine. Elle permet de récupérer un ticket auprès du serveur d'authentification CAS pour s'authentifier auprès de serveurs tiers (mULti, Annuaire, ...).

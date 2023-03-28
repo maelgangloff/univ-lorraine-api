@@ -2,8 +2,8 @@
 
 <dl>
 <dt><a href="#Utilisateur">Utilisateur</a></dt>
-<dd><p>Support non officiel des API de l&#39;Université de Lorraine
-Un exemple d&#39;implémentation est disponible sur <a href="https://github.com/maelgangloff/u2l-bot">maelgangloff/bot-u2l</a></p>
+<dd><p>Support non officiel des API de l&#39;Université de Lorraine</p>
+<p>Un exemple d&#39;implémentation est disponible sur <a href="https://github.com/maelgangloff/u2l-bot">maelgangloff/bot-u2l</a></p>
 <p>La classe Utilisateur contient les informations d&#39;authentification d&#39;un étudiant ou d&#39;un personnel de l&#39;Université de Lorraine. Elle permet de récupérer un ticket auprès du serveur d&#39;authentification CAS pour s&#39;authentifier auprès de serveurs tiers (mULti, Annuaire, ...).</p>
 </dd>
 <dt><a href="#Annuaire">Annuaire</a></dt>
@@ -32,6 +32,7 @@ Un exemple d&#39;implémentation est disponible sur <a href="https://github.com/
 
 ## Utilisateur
 Support non officiel des API de l'Université de Lorraine
+
 Un exemple d'implémentation est disponible sur [maelgangloff/bot-u2l](https://github.com/maelgangloff/u2l-bot)
 
 La classe Utilisateur contient les informations d'authentification d'un étudiant ou d'un personnel de l'Université de Lorraine. Elle permet de récupérer un ticket auprès du serveur d'authentification CAS pour s'authentifier auprès de serveurs tiers (mULti, Annuaire, ...).
