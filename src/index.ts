@@ -17,13 +17,13 @@ const CAS_SERVICE_VALIDATE_URL = 'https://auth.univ-lorraine.fr/serviceValidate'
 
 /**
  * Support non officiel des API de l'Université de Lorraine
- * 
+ *
  * Un exemple d'implémentation est disponible sur [maelgangloff/bot-u2l](https://github.com/maelgangloff/u2l-bot)
- * 
+ *
  * La classe Utilisateur contient les informations d'authentification d'un étudiant ou d'un personnel de l'Université de Lorraine. Elle permet de récupérer un ticket auprès du serveur d'authentification CAS pour s'authentifier auprès de serveurs tiers (mULti, Annuaire, ...).
  * @example ```js
  * const { Utilisateur } = require('univ-lorraine-api')
- * 
+ *
  * const user = new Utilisateur('identifiantUL', 'motdepasseUL')
  * ```
  */
@@ -39,7 +39,7 @@ export class Utilisateur {
      * Générer un ticket d'authentification à faire utiliser par un service
      * @example ```js
      * const { Utilisateur, Service } = require('univ-lorraine-api')
-     * 
+     *
      * const user = new Utilisateur('identifiantUL', 'motdepasseUL')
      * user.getTicket(Service.MULTI).then(ticket => {
      *  console.log('Ticket à faire consommer par le service MULTI: ' + ticket)
@@ -65,7 +65,7 @@ export class Utilisateur {
      * @param {string} ticket Le ticket adressé au service
      * @example ```js
      * const { Utilisateur, Service } = require('univ-lorraine-api')
-     * 
+     *
      * const user = new Utilisateur('identifiantUL', 'motdepasseUL')
      * user.getTicket(Service.MULTI).then(async ticket => {
      *  const infos = await Utilisateur.serviceValidate(Service.MULTI, ticket)

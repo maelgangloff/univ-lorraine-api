@@ -14,13 +14,13 @@ const MULTI_GRAPHQL_URL = 'https://multi.univ-lorraine.fr/graphql'
  *  - Taux d'occupation des BU
  *  - Menu des Restos U'
  *  - FactUeL
- * 
+ *
  * @example ```js
  * const { Utilisateur, Multi } = require('univ-lorraine-api')
- * 
+ *
  * Multi.login(new Utilisateur('identifiantUL', 'motdepasseUL')).then(async auth => {
  *  const user = new Multi(auth)
- * 
+ *
  * })
  * ```
  */
@@ -40,10 +40,10 @@ export class Multi {
      * @param {Date} to Date de fin
      * @example ```js
      * const { Utilisateur, Multi } = require('univ-lorraine-api')
-     * 
+     *
      * Multi.login(new Utilisateur('identifiantUL', 'motdepasseUL')).then(async auth => {
      *  const user = new Multi(auth)
-     *  
+     *
      *  const timetable = await user.getTimetable('identifiantUL', new Date('2023-03-01'), new Date('2023-03-31'))
      *  for(const planning of timetable.plannings) {
      *    console.log('Planning : ' + planning.label)

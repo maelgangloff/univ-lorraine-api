@@ -31,7 +31,7 @@ export class Annuaire {
      * @param {boolean} withvac Rechercher dans les vacataires ou non
      * @example ```js
      * const { Annuaire, decryptData } = require('univ-lorraine-api')
-     * 
+     *
      * Annuaire.getLdapSearch('Durand', null, false).then(reponse => {
      *  for(const personne of reponse.items) {
      *    console.log(`${personne.displayName} <${decryptData(personne.mail)}>`)
