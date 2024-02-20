@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: Univ-Lorraine API
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Maël
+    family-names: Gangloff
+    email: contact@maelgangloff.fr
+    orcid: 'https://orcid.org/0000-0002-7729-724X'
+identifiers:
+  - type: url
+    value: >-
+      https://github.com/maelgangloff/univ-lorraine-api/releases/tag/v0.0.7
+    description: Release v0.0.7 of univ-lorraine-api
+repository-code: 'https://github.com/maelgangloff/univ-lorraine-api'
+abstract: Support non officiel de certaines API de l'Université de Lorraine
+keywords:
+  - Université de Lorraine
+  - API
+  - U2L
+license: GPL-3.0-or-later
+version: 0.0.7
+date-released: '2023-03-15'
+license-url: 'https://github.com/maelgangloff/univ-lorraine-api/blob/master/LICENSE'
